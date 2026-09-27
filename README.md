@@ -1,83 +1,76 @@
-# Design and Implementation of securing data using Cryptography and Steganography
-<p>It is  a Python based application with use of flask a microservice based
-framework to demonstrate the combination of cryptography that is based on symmetric key and
-steganography that is based on modified LSB which helps to provide security to confidential data over
-an unsecured network.</p>
+### Project Title
 
-# Project Team Members :
-<ul>
-<li><b>Awanit Ranjan (181CO161) </b></li>
-<li><b>Rutwik Mulay (181CO144)</b></li>
-<li><b>Kshitij Raj (181CO129) </b></li>
-</ul>
+**Designing Next-Generation Cryptography for Secure and Private Communication**
 
-<br>
+### Project Overview
 
+My major project was a **Python-based security application** designed to protect confidential information while transmitting it over an unsecured network.
 
-Feel Free to head to this Youtube Video  for demo of the project : https://youtu.be/N4Kap2nE2Pc 
+The main idea was to combine **cryptography and steganography**. Cryptography was used to convert the original message into unreadable encrypted data, and steganography was used to hide that encrypted data inside an image.
 
-# METHODOLOGY : 
-<div>
-<p>
-  First, we take the original data and encrypt it into
-ciphertext by utilizing the proposed symmetric cryptography method in which we will break the 128 bits
-into 4 equal groups of 32 bit each this 32-bit block will be undergone some circular shift and xor
-operations with secret keys . ( These ideas are inspired by [1] and [2] ). After this, the encrypted data will
-be embedded in a Cover Image by use of proposed steganography strategy which is utilizing least
-significant bit (LSB) [ In this we are think of going with a mixture of LSB-1, LSB-2, LSB-3 (i.e storing at
-first, second, and a third bit from the least significant side) alternatingly. ] to finally create a new image
-which is a stego content this is sent over the channel and at receiver side the same process will occur
-but in reverse, starting from extracting encrypted content from stego and finally decrypting using
-proposed decryption algorithm again inspired by [1] and [2]. Although ideas are inspired, we will use our
-own proposed architecture for encryption and decryption finally converting into an application for
-sending data over insecure channels.
-</p>
-</div>
+I developed the application using **Python and Flask** and implemented the encryption, decryption, and image-based data hiding processes.
 
+### How the Project Works
 
+The project works in four main steps:
 
-# How To Run The Project :
+**1. Input confidential data**
 
-Make Dirctory Crypto_Project : <br/>
-`mkdir Crypto_Project`
+First, the user provides the confidential message that needs to be protected.
 
- <br/>
- 
-Move Inside the Directory:   <br/>
-`cd Crypto_Project`
+**2. Encryption**
 
- <br/>
- 
- 
-Clone The Repo: <br/>
-`git clone https://github.com/Awanit512/Implementation-of-securing-data-using-Crypto-and-Stegano`
+The message is encrypted before transmission. The encryption process converts the original readable message into **ciphertext**, so even if someone obtains the data, they cannot directly understand it.
 
+In our implementation, encryption involved operations such as **bit-level processing, circular shifts, XOR operations, and secret keys**.
 
- <br/>
- 
-Move Inside The Clone Repo: <br/>
-`cd Implementation-of-securing-data-using-Crypto-and-Stegano`
+**3. Steganography**
 
+After encryption, the ciphertext is hidden inside a **cover image** using a modified **LSB (Least Significant Bit)** technique.
 
- <br/>
- 
-Install all Requirements: <br/>
-`pip install -r requirements.txt` 
+Instead of simply using one LSB position, the approach uses different bit positions such as **LSB-1, LSB-2 and LSB-3** in an alternating manner.
 
- <br/>
- 
-Run the web application: <br/>
-`python3 app.py`
+The resulting image is called the **stego image**.
 
- <br/>
-After that Copy the link http://127.0.0.1:5000/ and paste it on your Broswe and you are good to go .
+The important advantage is that the encrypted information is not transmitted as an obvious text or file. It is concealed inside an image.
 
- <br/>
+**4. Extraction and Decryption**
 
-# REFERENCES
+At the receiver's side, the process is reversed.
 
-[1] Marwa E. Saleh Abdel Magied A. Aly Fatma A. Omara. CSE from Minia University, ​ Data Security Using Cryptography and
-Steganography Techniques . ​ International Journal of Advanced Computer Science and applications, 2016.
+First, the hidden encrypted data is extracted from the stego image. Then the extracted ciphertext is decrypted using the appropriate key to recover the original message.
 
-[2] Ms. Hemlata Sharma, Ms. MithleshArya, and Mr. Dinesh Goyal. Department of CSE ​ Secure Image Hiding Algorithm using
-Cryptography and Steganography. 2013
+### Technologies Used
+
+* **Python** – Main programming language
+* **Flask** – Web application/microservice framework
+* **Cryptography** – Encryption and decryption
+* **Steganography** – Hiding encrypted information inside an image
+* **LSB technique** – Image-based data hiding
+* **HTML/CSS** – Web interface
+
+### My Contribution
+
+My contribution to the project was mainly focused on understanding and implementing the **security workflow**, including:
+
+* Implementing encryption and decryption logic
+* Working with image-based steganography
+* Implementing the modified LSB approach
+* Integrating the security functionality with the Flask application
+* Testing the encryption, embedding, extraction, and decryption flow
+* Debugging errors and improving the application workflow
+
+### Why We Combined Cryptography and Steganography
+
+Cryptography alone makes the information unreadable, but the encrypted data can still attract attention.
+
+Steganography hides the existence of the information.
+
+By combining both techniques, our approach provides **two layers of protection**:
+
+**Original Message → Encryption → Ciphertext → Hide inside Image → Stego Image**
+
+At the receiver:
+
+**Stego Image → Extract Ciphertext → Decrypt → Original Message**
+
